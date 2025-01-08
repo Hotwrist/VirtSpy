@@ -1,9 +1,6 @@
 # VirtSpy
 A lightweight C library for detecting virtual machine environments and retrieving hypervisor vendor information using &lt;cpui.h> and inline assembly with the CPUID instruction.
 
-Yes, the documentation I provided can be directly used as a `README.md` file. Here's the markdown-formatted version that you can copy and paste into your `README.md` file:
-
-```markdown
 # VM Detection Library Documentation
 
 ## Table of Contents
@@ -136,12 +133,4 @@ int main() {
 
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
-```
 
-### Explanation of Markdown Elements:
-- **Headings**: Markdown uses `#` to denote headers (`#` for the main title, `##` for subheadings).
-- **Code Blocks**: Use triple backticks (``````` ````) for blocks of code and single backticks for inline code.
-- **Lists**: Use `-` or `1.` to create bulleted or numbered lists, respectively.
-- **Links**: `[text](URL)` to create links.
-
-You can paste the above markdown directly into your `README.md` file, and it will render properly on platforms like GitHub, GitLab, or Bitbucket.
