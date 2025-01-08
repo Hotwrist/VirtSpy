@@ -68,32 +68,60 @@ In your C program, include the library's header file:
 
 ## API Reference
 
-### `int is_vm_detected()`
+### `int detected_vm()`
 **Description**: Checks if the current system is running inside a virtual machine.
 
 **Returns**:
 - `1` if a VM is detected.
-- `0` if no VM is detected.
+- `-1` if no VM is detected.
 
-### `void get_hypervisor_vendor(char *vendor, size_t length)`
+### `const char *get_hypervisor_vendor()`
 **Description**: Retrieves the hypervisor vendor string.
 
-**Parameters**:
-- `char *vendor`: A buffer to store the vendor string.
-- `size_t length`: The length of the buffer. Should be at least 13 bytes.
+### `int detect_nested_virtualization()`
+**Description**: Detects if we have a nested virtualization.
 
-**Notes**:
-- The `vendor` buffer must be large enough to hold the 12-character vendor string plus a null terminator.
+**Returns**:
+- `2` if nested virtualization is detected.
+- `-2` if no nested virtualization is detected.
+
+### `int detect_virtual_network_devices()`
+**Description**: Detects if we have virtual network devices.
+
+**Returns**:
+- `3` if virtual network devices is detected.
+- `-3` if no virtual network devices is detected.
+
+### `int detect_virtual_block_devices()`
+**Description**: Detects if we have virtual block devices.
+
+**Returns**:
+- `4` if virtual block devices is detected.
+- `-4` if no virtual block devices is detected.
+
+### `int check_kernel_modules()`
+**Description**: Detects if we have virtual kernel modules.
+
+**Returns**:
+- `5` if virtual kernel module is detected.
+- `-5` if no virtual kernel module is detected.
+
+### `int detect_virtual_pci_devices()`
+**Description**: Detects if we have virtual PCI devices.
+
+**Returns**:
+- `6` if virtual network devices is detected.
+- `-6` if no virtual PCI devices is detected.
 
 ## Examples
 
 ### Example 1: Check for VM Presence
 ```c
 #include <stdio.h>
-#include "vm_detect.h"
+#include "virt_spy.h"
 
 int main() {
-    if (is_vm_detected()) {
+    if (detect_vm() == VM_DETECTED) {
         printf("VM Detected\n");
     } else {
         printf("No VM Detected\n");
@@ -105,11 +133,10 @@ int main() {
 ### Example 2: Get Hypervisor Vendor
 ```c
 #include <stdio.h>
-#include "vm_detect.h"
+#include "virt_spy.h"
 
 int main() {
-    char vendor[13];
-    get_hypervisor_vendor(vendor, sizeof(vendor));
+    const char *vendor = get_hypervisor_vendor();
     printf("Hypervisor Vendor: %s\n", vendor);
     return 0;
 }
@@ -132,5 +159,5 @@ int main() {
 5. Create a pull request.
 
 ## License
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the GNU General Public License. See the [LICENSE](LICENSE) file for details.
 
