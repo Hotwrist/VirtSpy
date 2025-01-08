@@ -1,7 +1,7 @@
 # VirtSpy
-A lightweight C library for detecting virtual machine environments and retrieving hypervisor vendor information using &lt;cpui.h> and inline assembly with the CPUID instruction.
+A lightweight C library for detecting virtual machine environments and retrieving hypervisor vendor information using &lt;cpuid.h> and inline assembly with the CPUID instruction.
 
-# VM Detection Library Documentation
+# VirtSpy Library Documentation
 
 ## Table of Contents
 1. [Introduction](#introduction)
@@ -13,7 +13,7 @@ A lightweight C library for detecting virtual machine environments and retrievin
 7. [License](#license)
 
 ## Introduction
-The VM Detection Library provides functions to detect whether the current system is running inside a virtual machine and retrieve the hypervisor vendor information. This library uses inline assembly to execute the `CPUID` instruction and analyze the results.
+The VirtSpy Library provides functions to detect whether the current system is running inside a virtual machine and retrieve the hypervisor vendor information. This library uses inline assembly to execute the `CPUID` instruction and analyze the results.
 
 ## Installation
 
@@ -24,26 +24,26 @@ The VM Detection Library provides functions to detect whether the current system
 ### Building the Library
 1. **Clone the repository** (if applicable):
    ```bash
-   git clone https://github.com/yourusername/vm_detect_lib.git
-   cd vm_detect_lib
+   git clone https://github.com/hotwrist/VirtSpy.git
+   cd VirtSpy
    ```
 
 2. **Compile the Library**:
    - **Static Library**:
      ```bash
-     gcc -c vm_detect.c -o vm_detect.o
-     ar rcs libvm_detect.a vm_detect.o
+     gcc -c virt_spy.c -o virt_spy.o
+     ar rcs libvirt_spy.a virt_spy.o
      ```
 
    - **Dynamic Library**:
      ```bash
-     gcc -shared -fPIC vm_detect.c -o libvm_detect.so
+     gcc -shared -fPIC virt_spy.c -o libvirt_spy.so
      ```
 
 3. **Install System-wide**:
    ```bash
-   sudo mv libvm_detect.a /usr/local/lib/
-   sudo mv libvm_detect.so /usr/local/lib/
+   sudo mv libvirt_spy.a /usr/local/lib/
+   sudo mv libvirt_spy.so /usr/local/lib/
    sudo ldconfig
    ```
 
@@ -52,18 +52,18 @@ The VM Detection Library provides functions to detect whether the current system
 ### Linking the Library
 - **Static Library**:
   ```bash
-  gcc main.c -L/usr/local/lib -lvm_detect -o vm_check
+  gcc main.c -L/usr/local/lib -lvirt_spy -o vm_check
   ```
 
 - **Dynamic Library**:
   ```bash
-  gcc main.c -L/usr/local/lib -lvm_detect -o vm_check
+  gcc main.c -L/usr/local/lib -lvirt_spy -o vm_check
   ```
 
 ### Include the Header File
 In your C program, include the library's header file:
 ```c
-#include "vm_detect.h"
+#include "virt_spy.h"
 ```
 
 ## API Reference
